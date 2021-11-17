@@ -7,9 +7,10 @@ const { MongoClient, ObjectId } = require('mongodb');
 
 const PORT = process.env.PORT || 5000;
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-admin.initializeApp({
-	credential: admin.credential.cert('./firebase-admin.json'),
+const sum = admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
 });
+console.log(sum);
 
 app.use(express.json());
 app.use(cors());
