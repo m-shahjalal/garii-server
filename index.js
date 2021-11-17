@@ -6,11 +6,10 @@ require('dotenv').config();
 const { MongoClient, ObjectId } = require('mongodb');
 
 const PORT = process.env.PORT || 5000;
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+const firebaseConfig = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 const sum = admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
+	credential: admin.credential.cert(firebaseConfig),
 });
-console.log(sum);
 
 app.use(express.json());
 app.use(cors());
